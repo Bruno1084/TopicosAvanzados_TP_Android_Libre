@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ejercicio4a.Ejercicio4aActivity">
+
+    <include layout="@layout/ej4a_toolbar"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Galería de Arte"
+            android:textAlignment="center"
+            android:textSize="20dp"/>
+
+        <ImageView
+            android:id="@+id/ej4a_imgCover"
+            android:layout_width="300dp"
+            android:layout_height="400dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp">
+
+            <Button
+                android:id="@+id/ej4a_btnOfertas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:text="Ofertas"
+                android:layout_marginHorizontal="5dp"/>
+
+            <Button
+                android:id="@+id/ej4a_btnGeneros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Géneros"
+                android:backgroundTint="@color/blue"
+
+                android:layout_marginHorizontal="5dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

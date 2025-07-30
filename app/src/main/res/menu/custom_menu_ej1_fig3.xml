@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_ej1_fig3"
+        android:title="WhatsApp"
+        android:icon="@drawable/baseline_account_circle_24"
+        app:actionViewClass="com.google.android.material.search.SearchView"
+        app:showAsAction="ifRoom|collapseActionView">
+
+    </item>
+
+</menu>
