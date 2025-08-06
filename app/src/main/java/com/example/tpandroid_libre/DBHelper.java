@@ -127,8 +127,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return generos;
     }
 
-    public List<Obra> getAllObrasFromArtista(int idArtista) {
-        List<Obra> lista = new ArrayList<>();
+    public ArrayList<Obra> getAllObrasFromArtista(int idArtista) {
+        ArrayList<Obra> lista = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(
                 "SELECT obras.id, obras.nombre, obras.descripcion, obras.fecha, obras.precioEstimado, obras.duenio, obras.path " +

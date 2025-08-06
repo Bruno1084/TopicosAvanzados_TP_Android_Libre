@@ -1,11 +1,13 @@
 package com.example.tpandroid_libre.ejercicio4a.Clases;
 
-public class Obra {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Obra implements Parcelable {
     private int id;
     private String nombre;
     private String descripcion;
     private String fecha;
-
     private long precioEstimado;
     private String duenio;
     private int path;
@@ -18,6 +20,45 @@ public class Obra {
         this.precioEstimado = precioEstimado;
         this.duenio = duenio;
         this.path = path;
+    }
+
+    // Implementación de interfaz Parceable
+    protected Obra(Parcel in) {
+        id = in.readInt();
+        nombre = in.readString();
+        descripcion = in.readString();
+        fecha = in.readString();
+        precioEstimado = in.readLong();
+        duenio = in.readString();
+        path = in.readInt();
+    }
+
+    public static final Creator<Obra> CREATOR = new Creator<>() {
+        @Override
+        public Obra createFromParcel(Parcel in) {
+            return new Obra(in);
+        }
+
+        @Override
+        public Obra[] newArray(int size) {
+            return new Obra[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeInt(id);
+        parcel.writeString(nombre);
+        parcel.writeString(descripcion);
+        parcel.writeString(fecha);
+        parcel.writeLong(precioEstimado);
+        parcel.writeString(duenio);
+        parcel.writeInt(path);
     }
 
     public int getId() {
@@ -75,7 +116,5 @@ public class Obra {
     public void setPath(int path) {
         this.path = path;
     }
-
-
 }
 

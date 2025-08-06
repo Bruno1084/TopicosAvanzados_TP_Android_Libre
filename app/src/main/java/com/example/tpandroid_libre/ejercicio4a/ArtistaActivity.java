@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.tpandroid_libre.DBHelper;
 import com.example.tpandroid_libre.R;
 import com.example.tpandroid_libre.ejercicio4a.Clases.Obra;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ArtistaActivity extends AppCompatActivity {
 
@@ -63,7 +63,7 @@ public class ArtistaActivity extends AppCompatActivity {
         tv.setText(nombreArtista);
 
         DBHelper db = new DBHelper(this);
-        List<Obra> obras = db.getAllObrasFromArtista(idArtista);
+        ArrayList<Obra> obras = db.getAllObrasFromArtista(idArtista);
 
         for (Obra obra : obras) {
             LinearLayout contenedor = new LinearLayout(this);
@@ -77,10 +77,19 @@ public class ArtistaActivity extends AppCompatActivity {
             img.setLayoutParams(params);
             img.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-            // Al hacer clic en la imagen, abre la vista detallada
+            // Intent a imagen completa
+//            img.setOnClickListener(v -> {
+//                Intent intent = new Intent(this, ObraDetalleActivity.class);
+//                intent.putExtra("obraId", obra.getId());
+//                startActivity(intent);
+//            });
+
+            // Version 2
             img.setOnClickListener(v -> {
-                Intent intent = new Intent(this, ObraDetalleActivity.class);
-                intent.putExtra("obraId", obra.getId());
+                Intent intent = new Intent(this, ObraCompletaActivity.class);
+                int position = obras.indexOf(obra);
+                intent.putExtra("obraId", position);
+                intent.putParcelableArrayListExtra("obras", obras);
                 startActivity(intent);
             });
 
@@ -94,7 +103,5 @@ public class ArtistaActivity extends AppCompatActivity {
             contenedor.addView(obraInfo);
             obrasContainer.addView(contenedor);
         }
-
-
     }
 }
