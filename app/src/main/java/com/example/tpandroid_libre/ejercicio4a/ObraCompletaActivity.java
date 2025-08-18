@@ -1,6 +1,7 @@
 package com.example.tpandroid_libre.ejercicio4a;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
@@ -71,5 +72,5 @@ public class ObraCompletaActivity extends AppCompatActivity {
                 obraDuenio.setText("Dueño: " + obras.get(position).getDuenio());
             }
         });
-    }
+    } 
 }
