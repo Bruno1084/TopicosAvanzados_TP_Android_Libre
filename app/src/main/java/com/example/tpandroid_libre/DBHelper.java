@@ -208,27 +208,30 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Obra getObraById(int idObra) {
         SQLiteDatabase db = getReadableDatabase();
+        Obra obra = null;
 
         Cursor cursor = db.rawQuery(
                 "SELECT id, nombre, descripcion, fecha, precioEstimado, duenio, path " +
-                    "FROM obras WHERE obras.id = ?", new String []{String.valueOf(idObra)}
+                        "FROM obras WHERE obras.id = ?", new String[]{String.valueOf(idObra)}
         );
 
-        cursor.moveToFirst();
-        int id = cursor.getInt(0);
-        String nombre = cursor.getString(1);
-        String descripcion = cursor.getString(2);
-        String fecha = cursor.getString(3);
-        int precioEstimado = cursor.getInt(4);
-        String duenio = cursor.getString(5);
-        int path = cursor.getInt(6);
+        if (cursor != null && cursor.moveToFirst()) {
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            String descripcion = cursor.getString(2);
+            String fecha = cursor.getString(3);
+            int precioEstimado = cursor.getInt(4);
+            String duenio = cursor.getString(5);
+            int path = cursor.getInt(6);
 
-        cursor.close();
+            obra = new Obra(id, nombre, descripcion, fecha, precioEstimado, duenio, path);
+        }
+
+        if (cursor != null) cursor.close();
         db.close();
 
-        return new Obra(id, nombre, descripcion, fecha, precioEstimado, duenio, path);
+        return obra;
     }
-
 
     // Estos son los valores de prueba para la base de datos
     public void insertMockingData(SQLiteDatabase db) {

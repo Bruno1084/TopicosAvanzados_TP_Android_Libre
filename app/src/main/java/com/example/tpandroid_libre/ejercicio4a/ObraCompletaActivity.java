@@ -15,7 +15,6 @@ import com.example.tpandroid_libre.ejercicio4a.Clases.Obra;
 import java.util.ArrayList;
 
 public class ObraCompletaActivity extends AppCompatActivity {
-    private int obraId = 0;
     private ViewPager2 viewPager;
     private ArrayList<Obra> obras;
 
@@ -34,7 +33,7 @@ public class ObraCompletaActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        obraId = getIntent().getIntExtra("obraId", -1);
+        int obraId = getIntent().getIntExtra("obraId", -1);
         obras = getIntent().getParcelableArrayListExtra("obras");
 
         if (obras == null || obras.isEmpty()) {
@@ -53,7 +52,11 @@ public class ObraCompletaActivity extends AppCompatActivity {
         TextView btnObraOfertas = findViewById(R.id.btn_ofertasObra);
 
         btnObraInformacion.setOnClickListener(v -> {
+            int posicion = viewPager.getCurrentItem();
+            Obra obraSeleccionada = obras.get(posicion);
+
             Intent intent = new Intent(this, ObraInformacionActivity.class);
+            intent.putExtra("obra", obraSeleccionada);
             startActivity(intent);
         });
 
