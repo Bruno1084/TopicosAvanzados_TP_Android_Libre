@@ -3,7 +3,11 @@
     android:id="@+id/main_obra_completa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+    <include layout="@layout/ej4a_toolbar" />
+
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
@@ -14,56 +18,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="8dp">
 
-        <TextView
-            android:id="@+id/obraNombre"
+        <Button
+            android:id="@+id/btn_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:background="#EEEEEE"
-            android:text="Obra Nombre" />
+            android:backgroundTint="@color/blue"
+            android:text="Información" />
 
-        <TextView
-            android:id="@+id/obraDescripcion"
+        <Button
+            android:id="@+id/btn_ofertar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:background="#EEEEEE"
-            android:text="Obra Descripción" />
+            android:backgroundTint="@color/blue"
+            android:text="Ofertar"
+            android:layout_marginTop="8dp"/>
 
-        <TextView
-            android:id="@+id/obraFecha"
+        <Button
+            android:id="@+id/btn_ofertasObra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:background="#EEEEEE"
-            android:text="Obra Fecha" />
-
-        <TextView
-            android:id="@+id/obraPrecioEstimado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:background="#EEEEEE"
-            android:text="Obra Precio Estimado" />
-
-        <TextView
-            android:id="@+id/obraDuenio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:background="#EEEEEE"
-            android:text="Obra Dueño" />
+            android:backgroundTint="@color/blue"
+            android:text="Ver Ofertas"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 </LinearLayout>

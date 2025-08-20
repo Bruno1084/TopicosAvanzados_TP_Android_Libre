@@ -1,7 +1,7 @@
 package com.example.tpandroid_libre.ejercicio4a;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
@@ -34,7 +34,6 @@ public class ObraCompletaActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-
         obraId = getIntent().getIntExtra("obraId", -1);
         obras = getIntent().getParcelableArrayListExtra("obras");
 
@@ -48,29 +47,26 @@ public class ObraCompletaActivity extends AppCompatActivity {
         viewPager.setAdapter(new ObraCompletaAdapter(obras));
         viewPager.setCurrentItem(obraId, false);
 
-        TextView obraNombre = findViewById(R.id.obraNombre);
-        TextView obraDescripcion = findViewById(R.id.obraDescripcion);
-        TextView obraFecha = findViewById(R.id.obraFecha);
-        TextView obraPrecioEstimado = findViewById(R.id.obraPrecioEstimado);
-        TextView obraDuenio = findViewById(R.id.obraDuenio);
-        Obra obra = obras.get(obraId);
+        // Opciones de obra
+        TextView btnObraInformacion = findViewById(R.id.btn_info);
+        TextView btnObraOfertar = findViewById(R.id.btn_ofertar);
+        TextView btnObraOfertas = findViewById(R.id.btn_ofertasObra);
 
-        obraNombre.setText("Nombre: " + obra.getNombre());
-        obraDescripcion.setText("Descripción: " + obra.getDescripcion());
-        obraFecha.setText("Fecha: " + obra.getFecha());
-        obraPrecioEstimado.setText("Precio: " + obra.getPrecioEstimado());
-        obraDuenio.setText("Dueño: " + obra.getDuenio());
+        btnObraInformacion.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ObraInformacionActivity.class);
+            startActivity(intent);
+        });
 
-        // Modifica las descripciones al cambiar de obra
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                obraNombre.setText("Nombre: " + obras.get(position).getNombre());
-                obraDescripcion.setText("Descripción: " + obras.get(position).getDescripcion());
-                obraFecha.setText("Fecha: " + obras.get(position).getFecha());
-                obraPrecioEstimado.setText("Precio: " + String.valueOf(obras.get(position).getPrecioEstimado()));
-                obraDuenio.setText("Dueño: " + obras.get(position).getDuenio());
-            }
+        btnObraOfertar.setOnClickListener(v -> {
+            Intent intent = new Intent(this, OfertarActivity.class);
+            intent.putExtra("idObra", obraId);
+            startActivity(intent);
+        });
+
+        btnObraOfertas.setOnClickListener(v -> {
+            Intent intent = new Intent(this, OfertasObraActivity.class);
+            intent.putExtra("idObra", obraId);
+            startActivity(intent);
         });
     } 
 }

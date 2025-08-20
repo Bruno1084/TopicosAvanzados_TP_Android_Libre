@@ -18,6 +18,9 @@
         android:theme="@style/Theme.TpAndroid_Libre"
         tools:targetApi="31">
         <activity
+            android:name=".ejercicio4a.ObraInformacionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ejercicio4a.ObraCompletaActivity"
             android:exported="false" />
         <activity
@@ -28,9 +31,6 @@
             android:exported="false" />
         <activity
             android:name=".ejercicio4a.OfertarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ejercicio4a.ObraDetalleActivity"
             android:exported="false" />
         <activity
             android:name=".ejercicio3.ImageDetailActivity"
