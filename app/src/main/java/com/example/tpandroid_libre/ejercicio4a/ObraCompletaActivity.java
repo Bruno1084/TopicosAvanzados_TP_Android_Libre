@@ -2,6 +2,8 @@ package com.example.tpandroid_libre.ejercicio4a;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
@@ -32,6 +34,27 @@ public class ObraCompletaActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        // Toolbar buttons
+        ImageView leftIcon = findViewById(R.id.ej4a_toolbar_left_icon);
+        TextView titleToolbar = findViewById(R.id.ej4a_toolbar_title);
+
+        titleToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ObraCompletaActivity.this, Ejercicio4aActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                // finish();
+            }
+        });
+
+        leftIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         int obraId = getIntent().getIntExtra("obraId", -1);
         obras = getIntent().getParcelableArrayListExtra("obras");
