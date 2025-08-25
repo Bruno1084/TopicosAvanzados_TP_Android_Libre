@@ -74,6 +74,7 @@ public class ObraCompletaActivity extends AppCompatActivity {
         TextView btnObraOfertar = findViewById(R.id.btn_ofertar);
         TextView btnObraOfertas = findViewById(R.id.btn_ofertasObra);
 
+        // Retornar el id al hacer swipe
         btnObraInformacion.setOnClickListener(v -> {
             int posicion = viewPager.getCurrentItem();
             Obra obraSeleccionada = obras.get(posicion);
@@ -84,14 +85,20 @@ public class ObraCompletaActivity extends AppCompatActivity {
         });
 
         btnObraOfertar.setOnClickListener(v -> {
+            int posicion = viewPager.getCurrentItem();
+            Obra obraSeleccionada = obras.get(posicion);
+
             Intent intent = new Intent(this, OfertarActivity.class);
-            intent.putExtra("idObra", obraId);
+            intent.putExtra("idObra", obraSeleccionada.getId());
             startActivity(intent);
         });
 
         btnObraOfertas.setOnClickListener(v -> {
+            int posicion = viewPager.getCurrentItem();
+            Obra obraSeleccionada = obras.get(posicion);
+
             Intent intent = new Intent(this, OfertasObraActivity.class);
-            intent.putExtra("idObra", obraId);
+            intent.putExtra("idObra", obraSeleccionada.getId());
             startActivity(intent);
         });
     } 
